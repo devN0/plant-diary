@@ -14,9 +14,13 @@ Users can interact with PlantDiary using either a set of RESTful service endpoin
 1. As a home owner I want to catalog my specimens, so that I'll remember what I planted.
 
 ### Example
+
 **Given**: A feed of plant data is available.
+
 **When**: The user/service selects a plant Eastern Redbud.
+
 **When**: The user/service adds latitude 39.74 to an Eastern Redbud specimen.
+
 **Then**: The user's/service's Eastern Redbud specimen will be saved with latitude 39.74
 
 ### Example
