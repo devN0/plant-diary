@@ -35,6 +35,6 @@ Users can interact with PlantDiary using either a set of RESTful service endpoin
 
 **Given**: Specimen data is available and specimen 83 is Eastern Redbud.
 
-**When**: The user/specimen searches with id 83.
+**When**: The user/specimen searches for specimen with id 83.
 
 **Then**: Plant Diary will return exactly one record for "Eastern Redbud" specimen.
