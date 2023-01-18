@@ -11,7 +11,7 @@ Users can interact with PlantDiary using either a set of RESTful service endpoin
 
 ## Requirements
 
-1. As a home owner I want to catalog my specimens, so that I'll remember what I planted.
+1. As a homeowner I want to catalog my specimens, so that I'll remember what I planted.
 
 ### Example
 
@@ -25,8 +25,16 @@ Users can interact with PlantDiary using either a set of RESTful service endpoin
 
 ### Example
 
-**Given**: Specimen data are available
+**Given**: Specimen data is available.
 
 **When**: The user/service searches for “kajsd;luaopuidfjo;aj;sd”
 
 **Then**: Plant Diary will not return any results, and the user will not be able to save the specimen.
+
+### Example
+
+**Given**: Specimen data is available and specimen 83 is Eastern Redbud.
+
+**When**: The user/specimen searches with id 83.
+
+**Then**: Plant Diary will return exactly one record for "Eastern Redbud" specimen.
