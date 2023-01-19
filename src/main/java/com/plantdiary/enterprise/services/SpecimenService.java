@@ -4,4 +4,6 @@ import com.plantdiary.enterprise.dto.Specimen;
 
 public interface SpecimenService {
     Specimen getSpecimenById(int id);
+
+    Specimen save(Specimen specimen);
 }
