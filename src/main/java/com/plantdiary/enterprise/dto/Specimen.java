@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Specimen {
     private long id;
+    private long plantId;
     private String name;
     private float latitude;
     private float longitude;

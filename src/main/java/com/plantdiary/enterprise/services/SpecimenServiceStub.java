@@ -2,31 +2,49 @@ package com.plantdiary.enterprise.services;
 
 import com.plantdiary.enterprise.dao.SpecimenDAO;
 import com.plantdiary.enterprise.dto.Specimen;
-import lombok.AllArgsConstructor;
+import com.plantdiary.enterprise.exceptions.SpecimenNotFoundException;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 @Service
 public class SpecimenServiceStub implements SpecimenService {
     private SpecimenDAO specimenDAO;
 
     public SpecimenServiceStub() {}
+    @Autowired
     public SpecimenServiceStub(SpecimenDAO specimenDAO) {
         this.specimenDAO = specimenDAO;
     }
 
-    Specimen specimen = new Specimen(83L, "Eastern Redbud", 39.74F, 42.53F);
     @Override
-    public Specimen getSpecimenById(int id) {
-        return specimen;
+    public Specimen getSpecimenById(long id) {
+        Specimen foundSpecimen = specimenDAO.getSpecimenById(id);
+        if(foundSpecimen == null){
+            throw new SpecimenNotFoundException(id);
+        }
+        return foundSpecimen;
     }
 
     @Override
-    public Specimen save(Specimen specimen) {
+    public List<Specimen> fetchAll() {
+        return specimenDAO.fetchAll();
+    }
+
+    @Override
+    public Specimen save(Specimen specimen) throws Exception {
         return specimenDAO.save(specimen);
+    }
+
+    @Override
+    public Specimen delete(long id) {
+        Specimen deletedSpecimen = specimenDAO.delete(id);
+        if(deletedSpecimen == null){
+            throw new SpecimenNotFoundException(id);
+        }
+        return deletedSpecimen;
     }
 }
