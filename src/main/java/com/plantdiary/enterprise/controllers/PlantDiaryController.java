@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,12 +35,14 @@ public class PlantDiaryController {
     }
 
     @RequestMapping("/saveSpecimen")
-    public String saveSpecimen(Specimen specimen) {
-        try {
-            specimenService.save(specimen);
-        } catch(Exception e) {
-            e.printStackTrace();
-            return "start";
+    public String saveSpecimen(@ModelAttribute @Validated Specimen specimen, BindingResult bindingResult) {
+        if(!bindingResult.hasErrors()) {
+            try {
+                specimenService.save(specimen);
+            } catch(Exception e) {
+                e.printStackTrace();
+                return "start";
+            }
         }
         return "start";
     }
